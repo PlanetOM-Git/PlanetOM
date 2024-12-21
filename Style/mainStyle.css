@@ -682,6 +682,27 @@ header {
     filter: invert(0%) sepia(0%) saturate(7456%) hue-rotate(204deg) brightness(109%) contrast(96%);
 }
 
+.pandora {
+    width: 1rem;
+    
+    margin: 2em;
+}
+
+.pandora a:hover {
+    border: 2px solid black;
+    color: black;
+}
+
+.pandora img {
+    color: #00fbff !important;
+    filter: invert(95%) sepia(37%) saturate(5990%) hue-rotate(169deg) brightness(105%) contrast(103%);
+    
+}
+
+.pandora a:hover img {
+    filter: invert(0%) sepia(0%) saturate(7456%) hue-rotate(204deg) brightness(109%) contrast(96%);
+}
+
 .apple a:hover {
     color: rgb(105, 105, 105) !important;
     border: 4px solid silver !important;
@@ -1512,9 +1533,9 @@ header {
         min-height:unset;
         height: 300px !important;
     }
-   /*  #autot-card {
-        height: 1100px !important;
-    } */
+     #autot-card {
+        height: 100% !important;
+    
     /* <!-- ----@Media Projects Section End----------> */
 
     /* <!-- ----@Media About Section--------------> */
