@@ -485,6 +485,9 @@ header {
     transform: scale(1.1) translateY(-5%);
 }
 
+.social-icons{
+    margin-top: 2em;}
+
 .social-icons .social-icons-box {
     margin-left: 20px;
 }
@@ -495,7 +498,7 @@ header {
     margin: 0 8px;
     border: 2px solid var(--secondary);
     border-radius: 50%;
-    font-size: var(--fs-scbtn);
+    font-size: 2rem;
     color: var(--secondary);
     transition: 0.5s;
 }
@@ -995,7 +998,7 @@ header {
 
 /* <!-- ----Contact Section----------------> */
 #contact-section {
-    min-height: 400px;
+    min-height: 325px;
     padding: 50px 25px 50px 25px;
     gap: 1em;
     background: var(--backcolor2);
