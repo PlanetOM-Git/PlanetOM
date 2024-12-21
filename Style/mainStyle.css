@@ -1016,8 +1016,8 @@ header {
     font-size: 1.3rem;
     font-weight: 500;
     text-align: justify;
-   /*  padding-left: 20%;
-    padding-right: 20%; */
+    padding-left: 0.25em;
+    padding-right: 0.25em;
 }
 
 /* <!-- ----About Section----------------> */
