@@ -3,7 +3,7 @@
 @font-face {
     font-family: omFont;
     /* src: url(/Media/Fonts/planetxcompact3d.ttf); */
-    src: url(/IE-Portfolio/Projects/PlanetOM/Media/Fonts/planetxcompact3d.ttf);
+    src: url(/Media/Fonts/planetxcompact3d.ttf);
 }
 
 
@@ -1456,8 +1456,10 @@ header {
 
     .sticky-title h2
     {
-    font-size: 3rem !important;
+    font-size: 2.25rem !important;
     }
+
+    
 
     .projects-section h2 {
         min-width: 100%;
