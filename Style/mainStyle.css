@@ -1504,10 +1504,6 @@ header {
         width: 90% !important;
     }
 
-    .cards-box {
-        min-height: 900px;
-    }
-
     .cards-img-box iframe {
         height: 200px;
         width: 80%;
@@ -1550,7 +1546,8 @@ header {
 
     #about-section p {
         padding: 0 !important;
-        font-size: var(--fs-p) !important;
+        font-size: 1.15rem !important;
+        padding: 1em 5%;
     }
 
     /* <!-- ----@Media About Section End--------------> */
@@ -1564,6 +1561,10 @@ header {
         padding: 0 !important;
         font-size: .98rem !important;
     }
+
+    #contact-section h2 {
+        font-size: 1.7rem;
+            }
 
     .form-container {
         width: 100% !important;
