@@ -1459,16 +1459,22 @@ header {
     /* <!-- ----@Media Home Section End----------> */
 
     /* <!-- ----@Media Aside Bar--------------> */
-    #aside-item-cpp {
-        display: none;
+    #aside-bar {
+        min-height:150px;
+    }
+
+    .aside-box{
+        gap:.2em;
+        padding: 0.5em;
+        padding-bottom: 1em;
     }
 
     .aside-item a {
-        font-size: 2.75rem;
+        font-size: 2.3rem;
     }
 
     .aside-item i img {
-        width: 3.2rem;
+        width: 1.8rem;
     }
 
     /* <!-- ----@Media Aside Bar End----------> */
@@ -1549,9 +1555,11 @@ header {
     }
 
     #about-section p {
-        padding: 0 !important;
-        font-size: 1.15rem !important;
+        width: 90% !important;
+        font-size: 1rem !important;
         padding: 1em 5%;
+        padding-left: 0;
+        padding-right:0;
     }
     /* <!-- ----@Media About Section End--------------> */
 
