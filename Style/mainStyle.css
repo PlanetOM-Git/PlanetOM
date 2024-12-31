@@ -1053,12 +1053,6 @@ header {
     font-family: 'Poppins', sans-serif;
 }
 
-.form-container {
-    width: 40%;
-    height: 400px;
-    position: relative;
-}
-
 .contact-box {
     position: absolute;
     top: 50%;
@@ -1073,130 +1067,6 @@ header {
     border-radius: 10px;
 }
 
-.form-container {
-    height: 300px;
-}
-
-
-.contact-box form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    flex-wrap: wrap;
-    justify-content: baseline;
-    align-items: center;
-    gap: 1em;
-}
-
-.contact-box .user-box {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-}
-
-.contact-box .user-box input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 1.25rem;
-    color: #00fbff;
-    font-weight: 500;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-}
-
-#userEmail {
-    font-size: 0.8rem;
-}
-
-#userMessage {
-    font-size: 0.7rem;
-    padding-bottom: 23px;
-}
-
-.msg-label {
-    bottom: 20px;
-}
-
-.contact-box .user-box label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s;
-}
-
-.contact-box .user-box input:focus~label {
-    top: -20px;
-    left: 0;
-    color: var(--secondary);
-    font-size: 0.9rem;
-}
-
-.contact-box .user-box input:not(:placeholder-shown)~label {
-    top: -20px;
-    left: 0;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: .5s;
-    text-shadow: rgb(255, 0, 0) 1px 0 5px;
-}
-
-.contact-box .user-box input:valid~label {
-    top: -20px;
-    left: 0;
-    color: greenyellow;
-    font-size: 0.9rem;
-    text-shadow: none;
-}
-
-
-.contact-box form a {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    color: var(--secondary);
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: .5s;
-    margin-top: 40px;
-    letter-spacing: 4px
-}
-
-.form-btn {
-    display: inline-block;
-    padding: 10px 30px;
-    background: transparent;
-    border: 2px solid var(--fs-h1);
-    border-radius: 40px;
-    box-shadow: 0 0 10px var(--secondary);
-    font-size: var(--fs-rebtn);
-    font-family: 'omFont', 'Poppins';
-    color: #00fbff;
-    font-weight: 600;
-    width: 45%;
-    grid-column:span 2;
-    text-align: center;
-    justify-self: center !important;
-    transition: .5s;
-}
-
-.form-btn:hover {
-    background-color: transparent;
-    color: #00fbff;
-    border: 2px solid #00fbff;
-    box-shadow: 0 0 5px var(--secondary);
-    transform: scale(1.05) translateY(-5%) !important;
-}
 
 /* <!-- ----End Contact Section----------------> */
 
@@ -1546,6 +1416,12 @@ header {
     }
      #autot-card {
         height: 100% !important;
+    }
+    #autot-card h3{
+        font-size: 2rem;
+    }
+    #autot-card h3 span{
+        font-size: 2.5rem;
     }
     /* <!-- ----@Media Projects Section End----------> */
 
