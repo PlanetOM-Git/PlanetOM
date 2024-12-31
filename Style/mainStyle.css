@@ -831,7 +831,7 @@ header {
     position: sticky !important;
     top: 75px !important;
     z-index: 1 !important;
-    border: 1px solid rgba(255, 255, 255, 0.225);
+    border: 1px solid rgba(255, 255, 255, 0.01);
     overflow: hidden !important
 }
 
@@ -1331,21 +1331,50 @@ header {
     /* <!-- ----@Media Aside Bar--------------> */
     #aside-bar {
         min-height:150px;
+        line-height: 0;
     }
 
     .aside-box{
         gap:.2em;
         padding: 0.5em;
-        padding-bottom: 1em;
+        row-gap: .5em;
     }
 
+    .aside-item{
+        gap: .2em;
+    }
     .aside-item a {
-        font-size: 2.3rem;
+        font-size: 2rem;
+        overflow:hidden;
+        padding: 2px;
+        min-height: 60px;
+        min-width: 60px;
+    }
+
+    .aside-item i {
+        padding: 0;
+        margin: 0;
+        height: 40px;
+        overflow: hidden;
     }
 
     .aside-item i img {
-        width: 1.8rem;
+        max-width: 1.5rem !important;
+        min-width: .1em;
+        padding: 0;
+        margin: 0;
     }
+
+    .tidal, .pandora{
+        width:unset;
+        margin: unset;
+        padding: unset;
+        overflow: hidden;
+
+        min-height: 0;
+        max-height: 60px;
+    }
+
 
     /* <!-- ----@Media Aside Bar End----------> */
 
@@ -1370,7 +1399,7 @@ header {
 
     .sticky-title h2
     {
-    font-size: 2.25rem !important;
+    font-size: 1.5rem !important;
     }
 
     
@@ -1448,6 +1477,7 @@ header {
 
     #contact-section h2 {
         font-size: 2rem;
+        text-align: center;
     }
 
     .social-icons-box{
