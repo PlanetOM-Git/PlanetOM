@@ -512,16 +512,18 @@ header {
 .logo-img {
     transition: 2s;
     mix-blend-mode: multiply;
-    opacity: 0.4;
+    opacity: 0.6;
     border-radius: 50%;
     cursor: pointer;
-    object-fit: cover;
+    object-fit: center;
+    background-position: top top;
     box-shadow: 0px 0px 1px 1px rgba(255, 250, 250, 0.181);
 }
 
+
 .logo-img:hover {
     transform: translate(20px, -10px) scale(1.01);
-    opacity: .8;
+    opacity: .85;
     border-radius: 50%;
     box-shadow: 5px 5px 15px 0px rgba(76, 159, 242, 0.05);
 }
@@ -531,8 +533,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25vw;
-    height: 25vw;
+    width: 28vw;
+    height: 28vw;
     padding: 2px;
     border-radius: 50%;
     z-index: 1;
@@ -547,8 +549,8 @@ header {
 .logo-img .logo-img-box::after {
     content: ' ';
     position: absolute;
-    width: 25vw;
-    height: 25vw;
+    width: 28vw;
+    height: 28vw;
     background: conic-gradient(transparent, transparent, transparent, var(--secondary));
     transform: rotate(0deg);
     animation: rotate-border 6s linear infinite;
@@ -579,8 +581,8 @@ header {
 .logo-img .logo-img-box .logo-img-item img {
     position: absolute;
     display: block;
-    width: 50vw;
-    height: 35vw;
+    width: 28vw;
+    height: 28vw;
     object-fit: contain;
     border-radius: 50%;
     mix-blend-mode: lighten;
@@ -808,7 +810,7 @@ header {
     border-radius: 1em;
     overflow: hidden;
     transition: .8s;
-    cursor: pointer;
+
 }
 
 .cards-box:hover {
@@ -1015,8 +1017,9 @@ header {
     font-size: 1.3rem;
     font-weight: 500;
     text-align: justify;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
+    padding-left: 2em;
+    padding-right: 2em;
+    width: 60%;
 }
 
 /* <!-- ----About Section----------------> */
@@ -1431,13 +1434,21 @@ header {
     .logo-img:hover {
         transform: scale(1.05) translateX(10%) !important;
     }
+    .logo-img .logo-img-box {
+        width: 40vw;
+        height: 40vw;
+        padding: 1px;
+    }
 
-    .logo-img-box,
-    .logo-img-box::before,
-    .logo-img-box::after {
-        padding: 2px !important;
-        width: 35vw !important;
-        height: 35vw !important;
+    .logo-img .logo-img-box::before,
+    .logo-img .logo-img-box::after {
+        width: 40vw;
+        height: 40vw;
+    }
+
+    .logo-img .logo-img-box .logo-img-item img {
+        width: 40vw;
+        height: 40vw;
     }
 
     .home-info p {
@@ -1456,16 +1467,15 @@ header {
         font-size: 2.75rem;
     }
 
-        .aside-item i img {
-            width: 3.2rem;
-        }
+    .aside-item i img {
+        width: 3.2rem;
+    }
 
     /* <!-- ----@Media Aside Bar End----------> */
 
     /* <!-- ----@Media Projects Section--------------> */
     .projects-section {
 
-        /* background-image: url(/IE-Portfolio/Media/projects-background.jpg); */
         object-fit: cover !important;
         background-blend-mode: multiply;
         background-repeat: repeat-y;
@@ -1530,7 +1540,7 @@ header {
     }
      #autot-card {
         height: 100% !important;
-    
+    }
     /* <!-- ----@Media Projects Section End----------> */
 
     /* <!-- ----@Media About Section--------------> */
@@ -1538,55 +1548,29 @@ header {
         padding: 25px 25px 50px;
     }
 
-    #about-img-box {
-        width: 100px !important;
-        height: 100px !important;
-    }
-
     #about-section p {
         padding: 0 !important;
         font-size: 1.15rem !important;
         padding: 1em 5%;
     }
-
     /* <!-- ----@Media About Section End--------------> */
 
     /* <!-- ----@Media Contact Section--------------> */
     #contact-section {
         padding: 25px 15px 50px;
-    }
-
-    #contact-section p {
-        padding: 0 !important;
-        font-size: .98rem !important;
+        display: flex;
+        min-height: unset;
     }
 
     #contact-section h2 {
-        font-size: 1.7rem;
-            }
-
-    .form-container {
-        width: 100% !important;
-        height: 20em !important;
+        font-size: 2.2rem;
     }
 
-    .contact-box .user-box label
-    {
-        font-size: 1rem;
-    }
-    .contact-box .user-box input {
-        width: 100% !important;
+    .social-icons-box{
+    align-self: center;
+    justify-self: center;
     }
 
-    .contact-box form {
-        grid-template-columns: 1fr 1fr;
-        gap: 1em !important;
-    }
-
-    .form-btn {
-        width: 100% !important;
-        grid-column: span 2;
-    }
 
     /* <!-- ----@Media Contact Section End----------> */
 
