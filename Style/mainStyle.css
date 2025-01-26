@@ -6,7 +6,6 @@
     src: url(/Media/Fonts/planetxcompact3d.ttf);
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -54,9 +53,6 @@ html {
 
 body {
     background: var(--backcolor1);
-    /* background-image: url(/IE-Portfolio/Projects/PlanetOM/Media/star-that-is-sky.jpg); */
-/*     background-image: url(/Media/star-that-is-sky.jpg); */
-  /*   background-size: contain; */
     margin-top: 75px;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
