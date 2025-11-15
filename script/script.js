@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Force stable title so iPhone and in-app browsers do not pick a random heading
+  document.title = "Planet OM | AUTOT";
+
   // scroll to AUTOT section
   const scrollButton = document.querySelector("[data-scroll-autot]");
   const autotSection = document.getElementById("autot");
@@ -42,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         rootMargin: "-30% 0px -70% 0px",
-        threshold: 0,
+        threshold: 0
       }
     );
 
