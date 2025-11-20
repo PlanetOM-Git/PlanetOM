@@ -6,7 +6,6 @@
   <title>PLANET OM | AUTOT</title>
   
   <link rel="stylesheet" href="Style/mainStyle.css">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <script src="./script/script.js" defer></script>
 </head>
 <body>
@@ -15,10 +14,7 @@
   <div class="scanlines"></div>
   
   <div class="fixed-bg">
-    <!-- Parallax Star Layer -->
     <div class="star-layer"></div>
-    
-    <!-- Ambient Light Blobs -->
     <div class="ambient-light"></div>
     <div class="ambient-light secondary"></div>
   </div>
@@ -30,6 +26,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="#music">Releases</a></li>
+      <li><a href="#visuals">Visuals</a></li> <!-- Added Link -->
       <li><a href="#about">Project</a></li>
       <li><a href="#contact">Booking</a></li>
     </ul>
@@ -46,36 +43,60 @@
       </div>
     </section>
 
-    <!-- --- SECTION 02: FEATURED RELEASE --- -->
+    <!-- --- SECTION 02: FEATURED RELEASE (AUTOT) --- -->
     <section id="music" class="scroll-section">
       <div class="release-layout">
+        
+        <!-- Cover Art -->
         <div class="cover-art-container reveal">
           <img src="Media/AutotCover.jpg" alt="AUTOT Cover Art">
         </div>
         
+        <!-- Details + Embedded Player -->
         <div class="release-details reveal">
           <div class="tech-specs">
             <span>CAT: POM001</span>
             <span>GENRE: WORLD / ELECTRONIC</span>
             <span>DATE: 01.01.2025</span>
           </div>
+          
           <h2>AUTOT</h2>
+          
           <p class="description">
             A sonic translation of the "Signs" series by David Rakia. 
             Cinematic production meets Middle Eastern colors in a psychedelic texture.
             Designed for deep listening.
           </p>
-          <a href="https://open.spotify.com/artist/3M9OpKkHz15JKmKMZVesuI" target="_blank" class="cta-btn" style="background: transparent; border: 1px solid #fff; color: #fff;">
-            Spotify
-          </a>
-          <a href="https://music.apple.com/us/artist/planet-om/1545521793" target="_blank" class="cta-btn" style="background: transparent; border: 1px solid #fff; color: #fff; margin-left: 1rem;">
-            Apple
-          </a>
+
+          <!-- Buttons Row -->
+          <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+            <button id="toggle-spotify" class="cta-btn" style="cursor: pointer; border: none;">
+              <span class="btn-text">Preview Album</span>
+            </button>
+            <a href="https://distrokid.com/hyperfollow/planetom/autot" target="_blank" class="cta-btn" style="background: transparent; border: 1px solid #fff; color: #fff;">
+              Stream
+            </a>
+          </div>
+
+          <!-- HIDDEN SPOTIFY PLAYER (AUTOT) -->
+          <div id="spotify-wrapper" class="spotify-wrapper">
+            <iframe 
+              style="border-radius:12px" 
+              src="https://open.spotify.com/embed/artist/3M9OpKkHz15JKmKMZVesuI?utm_source=generator&theme=0" 
+              width="100%" 
+              height="152" 
+              frameBorder="0" 
+              allowfullscreen="" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy">
+            </iframe>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- --- SECTION 03: SECONDARY (Fixed Video) --- -->
+    <!-- --- SECTION 03: SECONDARY (Struggle) --- -->
     <section class="scroll-section" style="background: rgba(0,0,0,0.2);">
       <div class="release-layout">
         <div class="release-details reveal" style="order: 2; padding-left: 5vw;">
@@ -91,7 +112,6 @@
            <a href="https://distrokid.com/hyperfollow/planetom/struggle" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Stream EP</a>
         </div>
         
-        <!-- VIDEO CONTAINER (With Fix) -->
         <div class="cover-art-container reveal" style="order: 1;">
           <div class="video-container">
             <iframe 
@@ -108,7 +128,53 @@
       </div>
     </section>
 
-    <!-- --- SECTION 04: MANIFESTO --- -->
+    <!-- --- SECTION 04: HUGE PLAYLIST --- -->
+    <section class="scroll-section" style="padding: 6rem 0;">
+      <div class="playlist-container reveal">
+        <button id="toggle-playlist" class="accordion-btn">
+          <span class="accordion-title">PLANET OM UNIVERSE</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div id="playlist-wrapper" class="accordion-content">
+          <div class="iframe-box">
+            <iframe 
+              style="border-radius:12px" 
+              src="https://open.spotify.com/embed/artist/3M9OpKkHz15JKmKMZVesuI?utm_source=generator&theme=0" 
+              width="100%" 
+              height="450" 
+              frameBorder="0" 
+              allowfullscreen="" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- SECTION 05: VISUALS (New Teaser) --- -->
+    <section id="visuals" class="scroll-section">
+      <div class="visual-teaser-wrapper reveal">
+        <div class="teaser-header">
+          <span class="hero-tag">UPCOMING PREMIERE</span>
+        </div>
+        
+        <div class="teaser-card">
+          <!-- Make sure this file is in your Media folder! -->
+          <img src="Media/OpeningFrame4.png" alt="Mr. Dub & Ms. Hub Teaser" class="teaser-bg">
+          
+          <div class="teaser-overlay">
+            <div class="teaser-content">
+              <h2 class="teaser-title">MR. DUB & MS. HUB</h2>
+              <p class="teaser-sub">OFFICIAL MUSIC VIDEO</p>
+              <div class="status-badge">COMING SOON</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- SECTION 06: MANIFESTO --- -->
     <section id="about" class="scroll-section">
       <div class="about-grid">
         <div class="reveal">
@@ -124,17 +190,25 @@
       </div>
     </section>
 
-    <!-- --- SECTION 05: CONTACT --- -->
+    <!-- --- SECTION 07: CONTACT & SOCIALS --- -->
     <section id="contact" class="scroll-section">
       <div class="contact-minimal reveal">
         <p style="color: #666; margin-bottom: 1rem;">INQUIRIES / BOOKING / COLLAB</p>
         <a href="mailto:PlanetOmPro@Gmail.com" class="email-display">PlanetOmPro@Gmail.com</a>
         
-        <div class="social-dock">
-          <a href="https://www.instagram.com/planetommusic" target="_blank"><i class='bx bxl-instagram'></i></a>
-          <a href="https://www.facebook.com/PlanetOmMusic" target="_blank"><i class='bx bxl-facebook'></i></a>
-          <a href="https://planetom.bandcamp.com" target="_blank"><i class='bx bxs-music'></i></a>
-          <a href="https://www.youtube.com/@planetommusic" target="_blank"><i class='bx bxl-youtube'></i></a>
+        <div class="social-row">
+          <a href="https://www.instagram.com/planetommusic" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/PlanetOmMusic" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://planetom.bandcamp.com" target="_blank" aria-label="Bandcamp">
+            <svg viewBox="0 0 24 24"><path d="M0 12.5l8.5 7.5h15.5l-8.5-7.5-8.5 7.5-7-7.5zm12.5-12.5l8.5 7.5-8.5 7.5-8.5-7.5 8.5-7.5z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@planetommusic" target="_blank" aria-label="YouTube">
+             <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
         </div>
 
         <div style="margin-top: 5rem; font-size: 0.7rem; color: #444;">
