@@ -1,80 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Force stable title so iPhone and in-app browsers do not pick a random heading
-  document.title = "Planet OM | AUTOT";
+  
+  // 1. Dynamic Year
+  const yearSpan = document.getElementById("year");
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  // scroll to AUTOT section
-  const scrollButton = document.querySelector("[data-scroll-autot]");
-  const autotSection = document.getElementById("autot");
-
-  if (scrollButton && autotSection) {
-    scrollButton.addEventListener("click", (e) => {
-      e.preventDefault();
-      autotSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }
-
-  // footer year
-  const yearSpan = document.getElementById("footer-year");
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
-
-  // active nav on scroll
-  const sections = document.querySelectorAll("main > section[id]");
-  const navLinks = document.querySelectorAll(".main-nav a.nav-link");
-
-  if (sections.length > 0 && navLinks.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute("id");
-
-            navLinks.forEach((link) => {
-              link.classList.remove("active");
-            });
-
-            const correspondingLink = document.querySelector(
-              `.main-nav a[href="#${id}"]`
-            );
-            if (correspondingLink) {
-              correspondingLink.classList.add("active");
-            }
-          }
-        });
-      },
-      {
-        rootMargin: "-30% 0px -70% 0px",
-        threshold: 0
-      }
-    );
-
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-  }
-
-  // close mobile menu on link click
-  const navToggle = document.getElementById("nav-toggle");
-  const navMenuLinks = document.querySelectorAll(".main-nav a");
-
-  navMenuLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (navToggle && navToggle.checked) {
-        navToggle.checked = false;
-      }
-    });
+  // 2. Navbar Scroll Effect (Glassmorphism toggle)
+  const header = document.querySelector(".site-header");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
   });
 
-  // scroll top visibility
-  const scrollTopBtn = document.querySelector(".scroll-top");
-  if (scrollTopBtn) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        scrollTopBtn.classList.add("visible");
-      } else {
-        scrollTopBtn.classList.remove("visible");
+  // 3. Scroll Reveal Animation (The "Smart" Part)
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.15 // Trigger when 15% of element is visible
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // Only animate once
       }
     });
-  }
+  }, observerOptions);
+
+  const fadeElements = document.querySelectorAll(".fade-up");
+  fadeElements.forEach(el => observer.observe(el));
+
+  // 4. Active Link Highlighter
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+        const id = entry.target.getAttribute("id");
+        navLinks.forEach(link => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${id}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(section => navObserver.observe(section));
+
+  // 5. Mobile Menu Auto-Close
+  const navToggle = document.getElementById("nav-toggle");
+  const menuLinks = document.querySelectorAll(".main-nav a");
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      if(navToggle) navToggle.checked = false;
+    });
+  });
 });
