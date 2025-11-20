@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Planet OM | Electronic World Music</title>
-  <meta name="description" content="Planet OM - Cinematic electronic world music by Gidi Cohen.">
+  <title>PLANET OM | AUTOT</title>
   
   <link rel="stylesheet" href="Style/mainStyle.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -12,152 +11,138 @@
 </head>
 <body>
 
-  <!-- Texture & Background -->
-  <div class="noise-overlay"></div>
-  <div class="site-background"></div>
+  <!-- --- FIXED BACKGROUND LAYERS --- -->
+  <div class="scanlines"></div>
+  
+  <div class="fixed-bg">
+    <!-- Parallax Star Layer -->
+    <div class="star-layer"></div>
+    
+    <!-- Ambient Light Blobs -->
+    <div class="ambient-light"></div>
+    <div class="ambient-light secondary"></div>
+  </div>
 
-  <!-- Navigation -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#home" class="logo">
-        <div class="logo-mark"><img src="Media/po-logo.jpg" alt="Logo"></div>
-        <div class="logo-text">
-          <span class="logo-title">Planet OM</span>
-          <span class="logo-subtitle">Prod. Gidi Cohen</span>
+  <!-- --- FLOATING NAV DOCK --- -->
+  <nav class="nav-dock">
+    <a href="#home" class="nav-logo">
+      <img src="Media/po-logo.jpg" alt="OM">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#music">Releases</a></li>
+      <li><a href="#about">Project</a></li>
+      <li><a href="#contact">Booking</a></li>
+    </ul>
+  </nav>
+
+  <main class="content-wrapper">
+
+    <!-- --- SECTION 01: HERO --- -->
+    <section id="home" class="hero-section">
+      <div class="hero-tag">New Album Out Now</div>
+      <h1 class="hero-title">AUTOT</h1>
+      <div class="hero-actions">
+        <a href="https://distrokid.com/hyperfollow/planetom/autot" target="_blank" class="cta-btn">Listen Everywhere</a>
+      </div>
+    </section>
+
+    <!-- --- SECTION 02: FEATURED RELEASE --- -->
+    <section id="music" class="scroll-section">
+      <div class="release-layout">
+        <div class="cover-art-container reveal">
+          <img src="Media/AutotCover.jpg" alt="AUTOT Cover Art">
         </div>
-      </a>
-
-      <input type="checkbox" id="nav-toggle" class="nav-toggle">
-      <label for="nav-toggle" class="nav-toggle-label"><i class="bx bx-menu"></i></label>
-
-      <nav class="main-nav">
-        <ul>
-          <li><a href="#home" class="nav-link active">01. Home</a></li>
-          <li><a href="#music" class="nav-link">02. Releases</a></li>
-          <li><a href="#about" class="nav-link">03. About</a></li>
-          <li><a href="#contact" class="nav-link">04. Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div class="hero-content fade-up">
-          <span class="kicker">Latest Release • 01.01.2025</span>
-          <h1 class="hero-title">AUTOT</h1>
-          <p class="hero-subtitle">
-            A cinematic journey blending Middle Eastern colors with psychedelic textures. 
-            Inspired by the "Signs" series by David Rakia.
+        
+        <div class="release-details reveal">
+          <div class="tech-specs">
+            <span>CAT: POM001</span>
+            <span>GENRE: WORLD / ELECTRONIC</span>
+            <span>DATE: 01.01.2025</span>
+          </div>
+          <h2>AUTOT</h2>
+          <p class="description">
+            A sonic translation of the "Signs" series by David Rakia. 
+            Cinematic production meets Middle Eastern colors in a psychedelic texture.
+            Designed for deep listening.
           </p>
-          
-          <div class="btn-group">
-            <a href="https://distrokid.com/hyperfollow/planetom/autot" target="_blank" class="btn btn-primary">Listen Now</a>
-            <a href="#music" class="btn btn-outline">Discography</a>
-          </div>
-
-          <div class="platform-list">
-            <a href="https://open.spotify.com/artist/3M9OpKkHz15JKmKMZVesuI" target="_blank" class="platform-link"><i class='bx bxl-spotify'></i></a>
-            <a href="https://music.apple.com/us/artist/planet-om/1545521793" target="_blank" class="platform-link"><i class='bx bxl-apple'></i></a>
-            <a href="https://www.youtube.com/@planetommusic" target="_blank" class="platform-link"><i class='bx bxl-youtube'></i></a>
-            <a href="https://planetom.bandcamp.com/" target="_blank" class="platform-link"><i class='bx bxs-label'></i></a>
-          </div>
-        </div>
-
-        <div class="hero-visual fade-up" style="transition-delay: 0.2s;">
-          <img src="Media/AutotCover.jpg" alt="AUTOT Album Art" class="album-art">
+          <a href="https://open.spotify.com/artist/3M9OpKkHz15JKmKMZVesuI" target="_blank" class="cta-btn" style="background: transparent; border: 1px solid #fff; color: #fff;">
+            Spotify
+          </a>
+          <a href="https://music.apple.com/us/artist/planet-om/1545521793" target="_blank" class="cta-btn" style="background: transparent; border: 1px solid #fff; color: #fff; margin-left: 1rem;">
+            Apple
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Music Section -->
-    <section id="music" class="section">
-      <div class="container">
-        <span class="kicker fade-up">Discography</span>
-        <h2 class="fade-up" style="margin-bottom: 3rem;">Selected Works</h2>
-
-        <!-- Release 1 -->
-        <article class="release-card fade-up" id="autot">
-          <div class="release-art">
-            <img src="Media/AutotCover.jpg" alt="Autot Cover">
+    <!-- --- SECTION 03: SECONDARY (Fixed Video) --- -->
+    <section class="scroll-section" style="background: rgba(0,0,0,0.2);">
+      <div class="release-layout">
+        <div class="release-details reveal" style="order: 2; padding-left: 5vw;">
+          <div class="tech-specs">
+            <span>EP</span>
+            <span>DOWNTEMPO</span>
+            <span>2021</span>
           </div>
-          <div class="release-info">
-            <div class="meta-row">LP // 2025 // ELECTRONIC WORLD</div>
-            <h3>AUTOT</h3>
-            <p class="release-desc">
-              The debut album. A mystical perspective on existence, translating visual art into soundscapes.
-              Collaborations with leading Israeli musicians create a deep listening experience.
-            </p>
-            <a href="https://distrokid.com/hyperfollow/planetom/autot" target="_blank" class="btn btn-outline">Stream Album</a>
-          </div>
-        </article>
-
-        <!-- Release 2 -->
-        <article class="release-card fade-up">
-          <div class="release-art">
-            <!-- Using a placeholder/video wrapper for consistency -->
-            <div style="position:relative; padding-bottom:56.25%; background:#000;">
-               <iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/videoseries?list=PLl5rhruab-rJhEOOsKeOvex9s_Bey9cJP" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-          <div class="release-info">
-            <div class="meta-row">EP // 2021 // DOWNTEMPO</div>
-            <h3>Struggle</h3>
-            <p class="release-desc">
-              Music inspired by the periodic struggles of existence. Deep, rhythmic, and introspective.
-            </p>
-            <a href="https://distrokid.com/hyperfollow/planetom/struggle" target="_blank" class="btn btn-outline">Stream EP</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-      <div class="container grid-2">
-        <div class="about-content fade-up">
-          <span class="kicker">The Project</span>
-          <h2 style="margin-bottom: 2rem;">Planet OM</h2>
-          <div class="text-block">
-            <p>Planet OM is the sonic vessel of Gidi Cohen, an Israeli keyboardist and producer.</p>
-            <p>It is where cinematic production meets global heritage. Electronic pulses intertwine with Middle Eastern scales and psychedelic textures to create harmonious landscapes.</p>
-            <p>Whether intended for meditation or movement, the sound of Planet OM is a bridge between the ancient and the synthetic.</p>
-          </div>
+          <h2 style="font-size: 2.5rem;">STRUGGLE</h2>
+          <p class="description">
+            Periodic struggle translated into rhythm. A darker, more introspective journey.
+          </p>
+           <a href="https://distrokid.com/hyperfollow/planetom/struggle" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Stream EP</a>
         </div>
-        <div class="about-image fade-up" style="transition-delay: 0.2s;">
-          <img src="Media/star-that-is-sky.jpg" style="width:100%; border-radius:2px; filter: sepia(20%) contrast(1.1);" alt="Atmosphere">
+        
+        <!-- VIDEO CONTAINER (With Fix) -->
+        <div class="cover-art-container reveal" style="order: 1;">
+          <div class="video-container">
+            <iframe 
+              style="position:absolute; width:100%; height:100%;" 
+              src="https://www.youtube.com/embed/videoseries?list=PLl5rhruab-rJhEOOsKeOvex9s_Bey9cJP" 
+              title="Planet OM - Struggle" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="fade-up">
-          <span class="kicker">Booking & Inquiries</span>
-          <h2>Let's Connect</h2>
-          <p style="color:var(--text-muted); margin: 1rem 0 3rem;">Open for electronic sets, film scoring, and collaborations.</p>
-          
-          <a href="mailto:PlanetOmPro@Gmail.com" class="contact-link">PlanetOmPro@Gmail.com</a>
-
-          <div class="platform-list" style="border:none; padding:0;">
-            <a href="https://www.instagram.com/planetommusic" target="_blank" class="platform-link"><i class='bx bxl-instagram'></i></a>
-            <a href="https://www.facebook.com/PlanetOmMusic" target="_blank" class="platform-link"><i class='bx bxl-facebook'></i></a>
-            <a href="https://planetom.bandcamp.com" target="_blank" class="platform-link"><i class='bx bxs-music'></i></a>
-          </div>
+    <!-- --- SECTION 04: MANIFESTO --- -->
+    <section id="about" class="scroll-section">
+      <div class="about-grid">
+        <div class="reveal">
+          <p class="hero-tag" style="opacity: 1;">THE PRODUCER</p>
+          <h3 class="huge-quote">
+            Electronic landscapes intertwine with global heritage. 
+            <span>Gidi Cohen</span> crafts grand, harmonious realms intended to transport listeners to otherworldly spaces.
+          </h3>
+        </div>
+        <div class="reveal">
+          <img src="Media/0022933563_10.jpg" class="producer-img" alt="Gidi Cohen">
         </div>
       </div>
     </section>
+
+    <!-- --- SECTION 05: CONTACT --- -->
+    <section id="contact" class="scroll-section">
+      <div class="contact-minimal reveal">
+        <p style="color: #666; margin-bottom: 1rem;">INQUIRIES / BOOKING / COLLAB</p>
+        <a href="mailto:PlanetOmPro@Gmail.com" class="email-display">PlanetOmPro@Gmail.com</a>
+        
+        <div class="social-dock">
+          <a href="https://www.instagram.com/planetommusic" target="_blank"><i class='bx bxl-instagram'></i></a>
+          <a href="https://www.facebook.com/PlanetOmMusic" target="_blank"><i class='bx bxl-facebook'></i></a>
+          <a href="https://planetom.bandcamp.com" target="_blank"><i class='bx bxs-music'></i></a>
+          <a href="https://www.youtube.com/@planetommusic" target="_blank"><i class='bx bxl-youtube'></i></a>
+        </div>
+
+        <div style="margin-top: 5rem; font-size: 0.7rem; color: #444;">
+          PLANET OM © <span id="year">2025</span>
+        </div>
+      </div>
+    </section>
+
   </main>
-
-  <footer style="padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem;">
-    <div class="container" style="display:flex; justify-content:space-between; color: var(--text-muted); font-family: var(--font-tech); font-size: 0.8rem;">
-      <span>Planet OM © <span id="year"></span></span>
-      <span>Israel // Earth</span>
-    </div>
-  </footer>
-
 </body>
 </html>
