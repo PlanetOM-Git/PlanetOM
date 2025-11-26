@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PLANET OM | AUTOT</title>
   
+  <link rel="icon" href="Media/po-logo.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="Media/po-logo.jpg">
+  
+  <meta property="og:title" content="PLANET OM | AUTOT">
+  <meta property="og:description" content="Electronic world music project. New album AUTOT out now.">
+  <meta property="og:image" content="Media/po-logo.jpg">
+  <meta property="og:type" content="website">
+
   <link rel="stylesheet" href="Style/mainStyle.css">
   <script src="./script/script.js" defer></script>
 </head>
@@ -22,13 +30,30 @@
     <a href="#home" class="nav-logo">
       <img src="Media/po-logo.jpg" alt="OM">
     </a>
+    
     <ul class="nav-links">
       <li><a href="#music">Releases</a></li>
       <li><a href="#visuals">Visuals</a></li>
       <li><a href="#about">Project</a></li>
       <li><a href="#contact">Booking</a></li>
     </ul>
+
+    <div class="menu-toggle" id="mobile-menu-btn">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
   </nav>
+
+  <div class="mobile-menu-overlay" id="mobile-menu">
+    <ul class="mobile-links">
+      <li><a href="#home" class="mobile-link">Home</a></li>
+      <li><a href="#music" class="mobile-link">Releases</a></li>
+      <li><a href="#visuals" class="mobile-link">Visuals</a></li>
+      <li><a href="#about" class="mobile-link">Project</a></li>
+      <li><a href="#contact" class="mobile-link">Booking</a></li>
+    </ul>
+  </div>
 
   <main class="content-wrapper">
 
@@ -57,7 +82,7 @@
             Cinematic production meets Middle Eastern colors in a psychedelic texture.
             Designed for deep listening.
           </p>
-          <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+          <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
             <button id="toggle-spotify" class="cta-btn" style="cursor: pointer; border: none;">
               <span class="btn-text">Preview Album</span>
             </button>
@@ -74,7 +99,7 @@
 
     <section class="scroll-section" style="background: rgba(0,0,0,0.2);">
       <div class="release-layout">
-        <div class="release-details reveal" style="order: 2; padding-left: 5vw;">
+        <div class="release-details reveal order-swap-mobile" style="padding-left: 5vw;">
           <div class="tech-specs">
             <span>EP</span>
             <span>DOWNTEMPO</span>
@@ -86,7 +111,7 @@
           </p>
            <a href="https://distrokid.com/hyperfollow/planetom/struggle" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Stream EP</a>
         </div>
-        <div class="cover-art-container reveal" style="order: 1;">
+        <div class="cover-art-container reveal">
           <div class="video-container">
             <iframe style="position:absolute; width:100%; height:100%;" src="https://www.youtube.com/embed/videoseries?list=PLl5rhruab-rJhEOOsKeOvex9s_Bey9cJP" title="Planet OM - Struggle" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
@@ -147,47 +172,36 @@
         <a href="mailto:PlanetOmPro@Gmail.com" class="email-display">PlanetOmPro@Gmail.com</a>
         
         <div class="social-row">
-          
           <a href="https://open.spotify.com/artist/3M9OpKkHz15JKmKMZVesuI" target="_blank" aria-label="Spotify">
             <img src="Media/icons/spotify-icon.png" class="social-icon" alt="Spotify">
           </a>
-
           <a href="https://music.apple.com/us/artist/planet-om/1545521793" target="_blank" aria-label="Apple Music">
             <img src="Media/icons/apple-icon.png" class="social-icon" alt="Apple Music">
           </a>
-
           <a href="https://www.youtube.com/@planetommusic" target="_blank" aria-label="YouTube">
             <img src="Media/icons/youtube-icon.png" class="social-icon" alt="YouTube">
           </a>
-
           <a href="https://tidal.com/browse/artist/22705436/u" target="_blank" aria-label="Tidal">
             <img src="Media/icons/tidal-icon.png" class="social-icon" alt="Tidal">
           </a>
-
           <a href="https://planetom.bandcamp.com" target="_blank" aria-label="Bandcamp">
              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg>
           </a>
-
           <a href="https://www.amazon.com/music/player/artists/B08QZ2SYCV/planet-om" target="_blank" aria-label="Amazon Music">
             <img src="Media/icons/amazon-icon.png" class="social-icon" alt="Amazon Music">
           </a>
-          
           <a href="https://deezer.page.link/J3a9D86CX14XaRJY6" target="_blank" aria-label="Deezer">
             <img src="Media/icons/deezer-icon.png" class="social-icon" alt="Deezer">
           </a>
-
           <a href="https://pandora.app.link/WHjBQkoVtQb" target="_blank" aria-label="Pandora">
             <img src="Media/icons/pandora-icon.png" class="social-icon" alt="Pandora">
           </a>
-          
           <a href="https://www.instagram.com/planetommusic" target="_blank" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
-          
           <a href="https://www.facebook.com/PlanetOmMusic" target="_blank" aria-label="Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
-
         </div>
 
         <div style="margin-top: 5rem; font-size: 0.7rem; color: #444;">

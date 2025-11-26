@@ -73,4 +73,24 @@ document.addEventListener("DOMContentLoaded", () => {
       if(target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
+  // 7. MOBILE MENU TOGGLE (NEW)
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  if(mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      mobileBtn.classList.toggle('active'); // Optional: for hamburger animation
+    });
+
+    // Close menu when a link is clicked
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileBtn.classList.remove('active');
+      });
+    });
+  }
 });
