@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add('loaded');
   });
 
-  // 9. AUTO-HIDE NAV LOGO (NEW)
+  // 9. AUTO-HIDE NAV LOGO
   const navLogo = document.querySelector('.nav-logo');
   
   const toggleNavLogo = () => {
@@ -115,6 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.addEventListener('scroll', toggleNavLogo);
-  toggleNavLogo(); // Run on init in case of refresh
+  toggleNavLogo(); // Run on init
 
 });

@@ -139,12 +139,12 @@ body.loaded #preloader { opacity: 0; pointer-events: none; }
   background-size: 100% 4px; opacity: 0.4;
 }
 
-/* --- NAVIGATION --- */
+/* --- NAVIGATION (CENTERED & REACTIVE) --- */
 .nav-dock {
   position: fixed; top: 2rem; left: 50%; transform: translateX(-50%);
   display: flex; align-items: center; 
-  justify-content: center; /* Center the whole group */
-  gap: 0; /* No gap for hidden items */
+  justify-content: center; /* Center items */
+  gap: 0; /* No gap so hidden logo doesn't push */
   padding: 0.8rem 3rem;
   background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border); border-radius: 100px;
@@ -152,28 +152,25 @@ body.loaded #preloader { opacity: 0; pointer-events: none; }
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* THE REACTIVE LOGO */
+/* REACTIVE LOGO: Starts collapsed */
 .nav-logo { 
   display: flex; 
   align-items: center; 
   z-index: 1001; 
   
-  /* Start Collapsed */
-  max-width: 0px; 
+  max-width: 0px; /* Width is 0 */
   opacity: 0;
-  margin-right: 0; 
-  overflow: hidden; /* Hide when collapsed */
+  margin-right: 0; /* No margin */
+  overflow: hidden; 
   
-  /* Smooth slide */
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* VISIBLE STATE */
 .nav-logo.visible {
-  max-width: 60px; 
-  margin-right: 1.5rem; /* Push links */
+  max-width: 60px; /* Opens up */
+  margin-right: 1.5rem; /* Pushes links away */
   opacity: 1;
-  /* Allow shadow/glow to spill out */
   overflow: visible; 
 }
 
@@ -558,7 +555,7 @@ body.loaded #preloader { opacity: 0; pointer-events: none; }
 }
 
 @media (max-width: 768px) {
-  /* REVERTED DOCK for Mobile */
+  /* Revert Dock to Space-Between for Mobile */
   .nav-dock { 
     justify-content: space-between; 
     top: 0; left: 0; transform: none; 
@@ -566,24 +563,24 @@ body.loaded #preloader { opacity: 0; pointer-events: none; }
     padding: 1rem 1.5rem;
     border: none; border-bottom: 1px solid var(--glass-border);
     background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(15px);
-    gap: 0;
+    gap: 0; /* Reset gap */
   }
   
-  /* MOBILE LOGO FIX: Start Hidden, Same Animation Logic */
+  /* MOBILE LOGO BEHAVIOR:
+     - Start hidden (width 0)
+     - Slide open on scroll
+  */
   .nav-logo { 
-    max-width: 0px; /* Start hidden */
-    opacity: 0; 
-    margin-right: 0;
-    overflow: hidden;
+    max-width: 0px; opacity: 0; margin-right: 0;
+    overflow: hidden; 
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* WHEN VISIBLE ON MOBILE */
+  /* Only show when script adds .visible */
   .nav-logo.visible {
-    max-width: 100px; /* Allow space */
-    opacity: 1;
-    margin-right: 0;
-    overflow: visible; /* Ensure full glow shows */
+    max-width: 60px; 
+    opacity: 1; 
+    overflow: visible;
   }
   
   .nav-logo img { height: 40px; width: 40px; }
