@@ -23,19 +23,21 @@
 /* --- RESET & BASE --- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body {
+html {
   width: 100%;
   overflow-x: hidden;
+  /* SAFETY BACKGROUND: If fixed bg fails, this deep purple shows instead of black */
+  background: #130924; 
 }
 
 body {
-  background-color: var(--bg);
-  /* Fallback to ensure no pitch black void */
-  background: radial-gradient(circle at 50% 120%, #1a0b2e 0%, #000 70%) fixed;
+  background-color: transparent; /* Let html background show through */
   color: var(--text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* --- LINKS & GLOW --- */
@@ -45,20 +47,11 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 /* --- BACKGROUND LAYERS --- */
 .fixed-bg {
   position: fixed; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  height: 100dvh; /* Uses Dynamic Viewport Height for Mobile Browsers */
+  top: 0; left: 0; right: 0; bottom: 0; /* Covers entire screen strictly */
   z-index: -1; 
   overflow: hidden; 
-  background: #020205;
-  pointer-events: none;
-}
-
-.deep-space-gradient {
-  position: absolute; inset: 0;
   background: radial-gradient(circle at 50% 120%, #1a0b2e 0%, #000 70%);
-  z-index: 0;
+  pointer-events: none;
 }
 
 .star-layer {
@@ -108,6 +101,7 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 }
 .nav-links a:hover { color: #fff; text-shadow: 0 0 15px rgba(255,255,255, 0.8); }
 
+/* Hamburger Menu */
 .menu-toggle {
   display: none; background: none; border: none; cursor: pointer;
   flex-direction: column; gap: 6px; z-index: 1002;
@@ -119,6 +113,7 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
+/* Mobile Menu Overlay */
 .mobile-menu-overlay {
   position: fixed; inset: 0;
   background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(25px);
@@ -202,21 +197,23 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
   position: relative;
   width: 100%; 
   max-width: 550px; 
-  height: 0; /* CRITICAL: This allows padding-bottom to define the height */
+  height: 0; 
   padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
   background: #111; 
   border-radius: var(--radius-media); 
   overflow: hidden; 
   box-shadow: 0 40px 90px rgba(0,0,0,0.9);
+  margin: 0 auto; /* Ensures centering on mobile */
 }
 
 .video-container iframe {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100% !important; /* FORCE WIDTH */
+  height: 100% !important; /* FORCE HEIGHT */
   border: 0;
+  object-fit: cover;
 }
 
 .release-details h2 { 
@@ -363,17 +360,35 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 900px) {
+  /* Removed display: flex here to prevent layout conflicts */
   .release-layout, .about-grid { 
-    display: flex; flex-direction: column; /* Fixes video stacking issue */
-    gap: 3rem; text-align: center; 
+    display: block; /* Simpler block layout for mobile */
+    text-align: center; 
   }
-  .cover-art-container, .about-grid > div:nth-child(2) { justify-content: center; }
+  
+  /* Add spacing between the stacked blocks */
+  .cover-art-container, .release-details {
+    margin-bottom: 3rem;
+  }
+
+  .cover-art-container, .about-grid > div:nth-child(2) { 
+    display: flex; 
+    justify-content: center; 
+  }
+  
   .release-details { align-items: center; margin: 0 auto; }
   .tech-specs { justify-content: center; }
   .producer-img { margin: 0 auto; }
   .release-details.reveal[style*="padding-left"] { padding-left: 0 !important; }
   
-  /* Ensure Secondary Release order is correct: Text first, then Video */
+  /* Re-order secondary release: Since we switched to block, we can't use 'order'.
+     We need to use Flexbox COLUMN just for this section if we want to reorder. */
+  .release-layout {
+    display: flex; 
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
   .order-swap-mobile { order: -1 !important; padding-left: 0 !important; }
   
   .social-row { gap: 1.5rem; max-width: 100%; }
