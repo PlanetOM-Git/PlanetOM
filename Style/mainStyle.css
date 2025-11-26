@@ -23,11 +23,17 @@
 /* --- RESET & BASE --- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* CRITICAL: Stops side-scrolling */
+}
+
 body {
   background-color: var(--bg);
+  /* Fallback Gradient if fixed div fails */
+  background: radial-gradient(circle at 50% 120%, #1a0b2e 0%, #000 70%) fixed; 
   color: var(--text);
   font-family: var(--font-body);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -37,11 +43,11 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 
 /* --- BACKGROUND LAYERS --- */
 .fixed-bg {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  z-index: -1; overflow: hidden; background: #020205;
+  position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+  z-index: -1; overflow: hidden; 
+  pointer-events: none;
 }
 
-/* NEW: Deep Space Gradient (No more pitch black) */
 .deep-space-gradient {
   position: absolute; inset: 0;
   background: radial-gradient(circle at 50% 120%, #1a0b2e 0%, #000 70%);
@@ -52,19 +58,17 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   background-image: url('../Media/star-that-is-sky.jpg');
   background-size: cover; background-position: center;
-  opacity: 0.6; /* Increased brightness */
-  mix-blend-mode: screen;
-  z-index: 1;
+  opacity: 0.6; mix-blend-mode: screen; z-index: 1;
 }
 
 .ambient-light {
-  position: absolute; width: 100vw; height: 100vw;
+  position: absolute; width: 100%; height: 100%;
   background: radial-gradient(circle, rgba(88, 28, 135, 0.25) 0%, transparent 65%);
-  top: -40%; left: -20%; filter: blur(90px); z-index: 2;
+  top: -20%; left: -20%; filter: blur(90px); z-index: 2;
   mix-blend-mode: screen; animation: pulse 12s infinite alternate;
 }
 .ambient-light.secondary {
-  top: auto; bottom: -40%; left: auto; right: -20%;
+  top: auto; bottom: -20%; left: auto; right: -20%;
   background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 65%);
   animation-delay: 6s;
 }
@@ -97,7 +101,7 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 }
 .nav-links a:hover { color: #fff; text-shadow: 0 0 15px rgba(255,255,255, 0.8); }
 
-/* Hamburger Menu Button (Hidden on Desktop) */
+/* Hamburger Menu (Hidden on Desktop) */
 .menu-toggle {
   display: none; background: none; border: none; cursor: pointer;
   flex-direction: column; gap: 6px; z-index: 1002;
@@ -259,11 +263,9 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 /* --- CONTACT --- */
 .contact-minimal { text-align: center; width: 100%; }
 .email-display {
-  display: block; font-size: clamp(1.2rem, 5vw, 4.5rem); /* Reduced min size for mobile */
+  display: block; font-size: clamp(1.2rem, 5vw, 4.5rem);
   font-family: var(--font-headline); color: rgba(255,255,255,0.2);
   text-decoration: none; transition: all 0.3s; margin-bottom: 3rem;
-  
-  /* FORCE WRAP */
   overflow-wrap: break-word; word-wrap: break-word; word-break: break-all;
   padding: 0 1rem;
 }
@@ -291,7 +293,7 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 }
 .social-row a:hover .social-icon { filter: brightness(0) invert(1); }
 
-/* --- HIDDEN SPOTIFY PLAYER (AUTOT) --- */
+/* --- HIDDEN SPOTIFY PLAYER --- */
 .spotify-wrapper {
   max-height: 0; overflow: hidden; opacity: 0;
   margin-top: 1rem; transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -339,16 +341,23 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 @keyframes pulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.2); opacity: 0.9; } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-/* --- MOBILE RESPONSIVENESS (UPDATED) --- */
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 900px) {
-  .release-layout, .about-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+  /* Force grid to stack vertically */
+  .release-layout, .about-grid { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 3rem; 
+    text-align: center; 
+  }
+  
   .cover-art-container, .about-grid > div:nth-child(2) { justify-content: center; }
   .release-details { align-items: center; margin: 0 auto; }
   .tech-specs { justify-content: center; }
   .producer-img { margin: 0 auto; }
   .release-details.reveal[style*="padding-left"] { padding-left: 0 !important; }
   
-  /* Fix order for secondary section so Text is above Video on mobile */
+  /* Re-order secondary release so text is above video */
   .order-swap-mobile { order: -1 !important; padding-left: 0 !important; }
   
   .social-row { gap: 1.5rem; max-width: 100%; }
@@ -356,7 +365,6 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 }
 
 @media (max-width: 768px) {
-  /* Navigation: Flush Top, Full Width, Square, Blurred */
   .nav-dock { 
     top: 0; left: 0; transform: none; 
     width: 100%; border-radius: 0;
@@ -365,13 +373,12 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
     background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(15px);
   }
   .nav-logo img { height: 40px; }
-  .nav-links { display: none; } /* Hide Desktop links */
-  .menu-toggle { display: flex; } /* Show Hamburger */
+  .nav-links { display: none; }
+  .menu-toggle { display: flex; }
   
-  /* Force Stars to be visible */
-  .star-layer { opacity: 0.5; background-attachment: scroll; } 
+  /* Keep stars bright on mobile */
+  .star-layer { opacity: 0.5; } 
   
-  /* Adjust sections */
   .scroll-section { padding: 4rem 1.5rem; }
   .accordion-title { font-size: 1.2rem; }
   .iframe-box { padding: 1rem; }
