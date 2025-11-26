@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if(mobileBtn && mobileMenu) {
     mobileBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('active');
-      mobileBtn.classList.toggle('active'); // for hamburger animation
+      mobileBtn.classList.toggle('active');
     });
 
     // Close menu when a link is clicked
@@ -52,27 +52,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 5. Scroll Reveal Observer
+  // 5. Repeatable Scroll Reveal
   const observerOptions = {
-    threshold: 0.1,
+    threshold: 0.15,
     rootMargin: "0px 0px -50px 0px"
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target);
+        entry.target.classList.add('active');
+      } else {
+        entry.target.classList.remove('active');
       }
     });
   }, observerOptions);
 
   const revealElements = document.querySelectorAll('.reveal');
   revealElements.forEach(el => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(50px)";
-    el.style.transition = "opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)";
     observer.observe(el);
   });
 
@@ -84,4 +81,40 @@ document.addEventListener("DOMContentLoaded", () => {
       if(target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
+  // 7. Custom Cursor Logic
+  const cursor = document.getElementById('cursor');
+  const cursorBlur = document.getElementById('cursor-blur');
+
+  if(cursor && cursorBlur) {
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      
+      setTimeout(() => {
+        cursorBlur.style.left = e.clientX + 'px';
+        cursorBlur.style.top = e.clientY + 'px';
+      }, 50);
+    });
+  }
+
+  // 8. Preloader Logic
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
+
+  // 9. AUTO-HIDE NAV LOGO (NEW)
+  const navLogo = document.querySelector('.nav-logo');
+  
+  const toggleNavLogo = () => {
+    if (window.scrollY > 300) {
+      navLogo.classList.add('visible');
+    } else {
+      navLogo.classList.remove('visible');
+    }
+  };
+
+  window.addEventListener('scroll', toggleNavLogo);
+  toggleNavLogo(); // Run on init in case of refresh
+
 });
