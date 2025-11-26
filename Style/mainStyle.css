@@ -25,16 +25,17 @@
 
 html, body {
   width: 100%;
-  overflow-x: hidden; /* CRITICAL: Stops side-scrolling */
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--bg);
-  /* Fallback Gradient if fixed div fails */
-  background: radial-gradient(circle at 50% 120%, #1a0b2e 0%, #000 70%) fixed; 
+  /* Fallback to ensure no pitch black void */
+  background: radial-gradient(circle at 50% 120%, #1a0b2e 0%, #000 70%) fixed;
   color: var(--text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 /* --- LINKS & GLOW --- */
@@ -43,8 +44,14 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 
 /* --- BACKGROUND LAYERS --- */
 .fixed-bg {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-  z-index: -1; overflow: hidden; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100dvh; /* Uses Dynamic Viewport Height for Mobile Browsers */
+  z-index: -1; 
+  overflow: hidden; 
+  background: #020205;
   pointer-events: none;
 }
 
@@ -62,13 +69,13 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 }
 
 .ambient-light {
-  position: absolute; width: 100%; height: 100%;
+  position: absolute; width: 100vw; height: 100vw;
   background: radial-gradient(circle, rgba(88, 28, 135, 0.25) 0%, transparent 65%);
-  top: -20%; left: -20%; filter: blur(90px); z-index: 2;
+  top: -40%; left: -20%; filter: blur(90px); z-index: 2;
   mix-blend-mode: screen; animation: pulse 12s infinite alternate;
 }
 .ambient-light.secondary {
-  top: auto; bottom: -20%; left: auto; right: -20%;
+  top: auto; bottom: -40%; left: auto; right: -20%;
   background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 65%);
   animation-delay: 6s;
 }
@@ -101,7 +108,6 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 }
 .nav-links a:hover { color: #fff; text-shadow: 0 0 15px rgba(255,255,255, 0.8); }
 
-/* Hamburger Menu (Hidden on Desktop) */
 .menu-toggle {
   display: none; background: none; border: none; cursor: pointer;
   flex-direction: column; gap: 6px; z-index: 1002;
@@ -113,7 +119,6 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
-/* Mobile Menu Overlay */
 .mobile-menu-overlay {
   position: fixed; inset: 0;
   background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(25px);
@@ -192,11 +197,26 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 }
 .cover-art-container:hover img { transform: scale(1.02); }
 
+/* --- VIDEO CONTAINER FIX --- */
 .video-container {
-  width: 100%; max-width: 550px; position: relative; 
-  padding-bottom: 56.25%; background: #111; 
-  border-radius: var(--radius-media); overflow: hidden; 
+  position: relative;
+  width: 100%; 
+  max-width: 550px; 
+  height: 0; /* CRITICAL: This allows padding-bottom to define the height */
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  background: #111; 
+  border-radius: var(--radius-media); 
+  overflow: hidden; 
   box-shadow: 0 40px 90px rgba(0,0,0,0.9);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .release-details h2 { 
@@ -343,21 +363,17 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 900px) {
-  /* Force grid to stack vertically */
   .release-layout, .about-grid { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 3rem; 
-    text-align: center; 
+    display: flex; flex-direction: column; /* Fixes video stacking issue */
+    gap: 3rem; text-align: center; 
   }
-  
   .cover-art-container, .about-grid > div:nth-child(2) { justify-content: center; }
   .release-details { align-items: center; margin: 0 auto; }
   .tech-specs { justify-content: center; }
   .producer-img { margin: 0 auto; }
   .release-details.reveal[style*="padding-left"] { padding-left: 0 !important; }
   
-  /* Re-order secondary release so text is above video */
+  /* Ensure Secondary Release order is correct: Text first, then Video */
   .order-swap-mobile { order: -1 !important; padding-left: 0 !important; }
   
   .social-row { gap: 1.5rem; max-width: 100%; }
@@ -376,9 +392,7 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
   .nav-links { display: none; }
   .menu-toggle { display: flex; }
   
-  /* Keep stars bright on mobile */
-  .star-layer { opacity: 0.5; } 
-  
+  .star-layer { opacity: 0.5; }
   .scroll-section { padding: 4rem 1.5rem; }
   .accordion-title { font-size: 1.2rem; }
   .iframe-box { padding: 1rem; }
