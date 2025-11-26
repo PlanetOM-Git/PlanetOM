@@ -143,8 +143,8 @@ body.loaded #preloader { opacity: 0; pointer-events: none; }
 .nav-dock {
   position: fixed; top: 2rem; left: 50%; transform: translateX(-50%);
   display: flex; align-items: center; 
-  justify-content: center; /* Center everything */
-  gap: 0; /* Remove gap so hidden logo takes 0 space */
+  justify-content: center; /* Center the whole group */
+  gap: 0; /* No gap for hidden items */
   padding: 0.8rem 3rem;
   background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border); border-radius: 100px;
@@ -165,7 +165,7 @@ body.loaded #preloader { opacity: 0; pointer-events: none; }
   overflow: hidden; /* Hide when collapsed */
   
   /* Smooth slide */
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
 }
 
 /* VISIBLE STATE */
@@ -173,13 +173,13 @@ body.loaded #preloader { opacity: 0; pointer-events: none; }
   max-width: 60px; 
   margin-right: 1.5rem; /* Push links */
   opacity: 1;
-  /* CRITICAL FIX: Allow shadow to spill out */
+  /* Allow shadow/glow to spill out */
   overflow: visible; 
 }
 
 .nav-logo img { 
-  height: 55px; width: 55px; /* Force Square Ratio base */
-  border-radius: 50%; /* Force Circle */
+  height: 55px; width: 55px; 
+  border-radius: 50%; 
   border: 1px solid rgba(255,255,255,0.1); 
   flex-shrink: 0; 
   object-fit: cover;
@@ -566,13 +566,24 @@ body.loaded #preloader { opacity: 0; pointer-events: none; }
     padding: 1rem 1.5rem;
     border: none; border-bottom: 1px solid var(--glass-border);
     background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(15px);
-    gap: 0; /* Reset gap */
+    gap: 0;
   }
   
-  /* STATIC LOGO for Mobile */
+  /* MOBILE LOGO FIX: Start Hidden, Same Animation Logic */
   .nav-logo { 
-    max-width: 100px; opacity: 1; margin-right: 0; transition: none;
-    overflow: visible; /* Ensure it's visible on mobile */
+    max-width: 0px; /* Start hidden */
+    opacity: 0; 
+    margin-right: 0;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* WHEN VISIBLE ON MOBILE */
+  .nav-logo.visible {
+    max-width: 100px; /* Allow space */
+    opacity: 1;
+    margin-right: 0;
+    overflow: visible; /* Ensure full glow shows */
   }
   
   .nav-logo img { height: 40px; width: 40px; }
