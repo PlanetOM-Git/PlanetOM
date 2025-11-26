@@ -37,16 +37,26 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 
 /* --- BACKGROUND LAYERS --- */
 .fixed-bg {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; /* dvh handles mobile URL bar better */
-  z-index: -1; overflow: hidden; background: #000;
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1; overflow: hidden; background: #020205;
 }
+
+/* NEW: Deep Space Gradient (No more pitch black) */
+.deep-space-gradient {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 120%, #1a0b2e 0%, #000 70%);
+  z-index: 0;
+}
+
 .star-layer {
-  position: absolute; top: -10%; left: -10%; width: 120%; height: 120%;
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   background-image: url('../Media/star-that-is-sky.jpg');
   background-size: cover; background-position: center;
-  opacity: 0.4; mix-blend-mode: screen;
-  filter: grayscale(100%) contrast(1.2); z-index: 1;
+  opacity: 0.6; /* Increased brightness */
+  mix-blend-mode: screen;
+  z-index: 1;
 }
+
 .ambient-light {
   position: absolute; width: 100vw; height: 100vw;
   background: radial-gradient(circle, rgba(88, 28, 135, 0.25) 0%, transparent 65%);
@@ -70,15 +80,16 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
   display: flex; align-items: center; gap: 3rem; padding: 0.8rem 3rem;
   background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border); border-radius: 100px;
-  z-index: 100; transition: all 0.4s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 1000; transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-.nav-logo { display: flex; align-items: center; z-index: 101; }
+.nav-logo { display: flex; align-items: center; z-index: 1001; }
 .nav-logo img { 
   height: 55px; width: auto; border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s;
 }
 .nav-logo:hover img { transform: scale(1.1); box-shadow: 0 0 15px rgba(255,255,255,0.2); }
+
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 .nav-links a {
   text-decoration: none; color: var(--text-dim); font-size: 0.8rem;
@@ -86,27 +97,34 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 }
 .nav-links a:hover { color: #fff; text-shadow: 0 0 15px rgba(255,255,255, 0.8); }
 
-/* Hamburger Menu (Hidden on Desktop) */
+/* Hamburger Menu Button (Hidden on Desktop) */
 .menu-toggle {
-  display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 101;
+  display: none; background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 6px; z-index: 1002;
 }
 .bar {
-  width: 25px; height: 2px; background-color: #fff; transition: 0.3s;
+  width: 28px; height: 2px; background-color: #fff; transition: 0.3s;
 }
+.menu-toggle.active .bar:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
 /* Mobile Menu Overlay */
 .mobile-menu-overlay {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px);
-  z-index: 90; display: flex; justify-content: center; align-items: center;
-  opacity: 0; pointer-events: none; transition: 0.5s ease;
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(25px);
+  z-index: 900; display: flex; justify-content: center; align-items: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
 }
 .mobile-menu-overlay.active { opacity: 1; pointer-events: all; }
-.mobile-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 2rem; }
+
+.mobile-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 2.5rem; }
 .mobile-link {
-  font-family: var(--font-headline); font-size: 2rem; color: #fff;
+  font-family: var(--font-headline); font-size: 2rem; color: #888;
   text-decoration: none; text-transform: uppercase; letter-spacing: 2px;
+  transition: all 0.3s;
 }
+.mobile-link:hover { color: var(--accent); transform: scale(1.1); }
 
 /* --- HERO --- */
 .hero-section {
@@ -120,12 +138,9 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 }
 .hero-title {
   font-family: var(--font-headline);
-  /* Adjusted Clamp for Mobile safety */
-  font-size: clamp(2.5rem, 12vw, 11rem); 
-  line-height: 0.9; color: #fff;
+  font-size: clamp(2.5rem, 12vw, 11rem); line-height: 0.9; color: #fff;
   text-shadow: 0 0 40px rgba(255,255,255,0.1); margin-bottom: 2rem;
-  opacity: 0; animation: fadeUp 1s forwards 0.8s;
-  padding: 0 10px; /* Safety padding */
+  opacity: 0; animation: fadeUp 1s forwards 0.8s; padding: 0 10px;
 }
 .hero-actions { opacity: 0; animation: fadeUp 1s forwards 1.1s; }
 .cta-btn {
@@ -244,22 +259,20 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 /* --- CONTACT --- */
 .contact-minimal { text-align: center; width: 100%; }
 .email-display {
-  display: block; font-size: clamp(1.5rem, 5vw, 4.5rem);
+  display: block; font-size: clamp(1.2rem, 5vw, 4.5rem); /* Reduced min size for mobile */
   font-family: var(--font-headline); color: rgba(255,255,255,0.2);
   text-decoration: none; transition: all 0.3s; margin-bottom: 3rem;
-  word-break: break-all; /* Prevents email from overflowing mobile screen */
+  
+  /* FORCE WRAP */
+  overflow-wrap: break-word; word-wrap: break-word; word-break: break-all;
+  padding: 0 1rem;
 }
 .email-display:hover { color: var(--text); text-shadow: 0 0 30px rgba(255,255,255,0.3); }
 
 /* --- SOCIAL ICONS --- */
 .social-row {
-  display: flex; 
-  justify-content: center; 
-  flex-wrap: wrap; 
-  gap: 2rem; 
-  max-width: 800px; 
-  margin: 2rem auto 0;
-  align-items: center;
+  display: flex; justify-content: center; flex-wrap: wrap; 
+  gap: 2rem; max-width: 800px; margin: 2rem auto 0; align-items: center;
 }
 .social-row a {
   color: #555; display: flex; align-items: center; justify-content: center;
@@ -343,19 +356,22 @@ a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-glow); }
 }
 
 @media (max-width: 768px) {
-  /* Navigation: Move to Top + Hamburger */
+  /* Navigation: Flush Top, Full Width, Square, Blurred */
   .nav-dock { 
-    top: 1rem; bottom: auto; width: 95%; 
-    justify-content: space-between; padding: 0.8rem 1.5rem;
+    top: 0; left: 0; transform: none; 
+    width: 100%; border-radius: 0;
+    justify-content: space-between; padding: 1rem 1.5rem;
+    border: none; border-bottom: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(15px);
   }
-  .nav-logo img { height: 45px; }
+  .nav-logo img { height: 40px; }
   .nav-links { display: none; } /* Hide Desktop links */
   .menu-toggle { display: flex; } /* Show Hamburger */
   
-  /* Remove star opacity reduction so background stays bright */
-  .star-layer { opacity: 0.4; }
+  /* Force Stars to be visible */
+  .star-layer { opacity: 0.5; background-attachment: scroll; } 
   
-  /* Adjust paddings */
+  /* Adjust sections */
   .scroll-section { padding: 4rem 1.5rem; }
   .accordion-title { font-size: 1.2rem; }
   .iframe-box { padding: 1rem; }

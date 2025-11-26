@@ -21,6 +21,7 @@
   <div class="scanlines"></div>
   
   <div class="fixed-bg">
+    <div class="deep-space-gradient"></div>
     <div class="star-layer"></div>
     <div class="ambient-light"></div>
     <div class="ambient-light secondary"></div>
@@ -38,11 +39,11 @@
       <li><a href="#contact">Booking</a></li>
     </ul>
 
-    <div class="menu-toggle" id="mobile-menu-btn">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
+    <button class="menu-toggle" id="mobile-menu-btn" aria-label="Open Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </nav>
 
   <div class="mobile-menu-overlay" id="mobile-menu">
@@ -80,7 +81,6 @@
           <p class="description">
             A sonic translation of the "Signs" series by David Rakia. 
             Cinematic production meets Middle Eastern colors in a psychedelic texture.
-            Designed for deep listening.
           </p>
           <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
             <button id="toggle-spotify" class="cta-btn" style="cursor: pointer; border: none;">
@@ -97,7 +97,7 @@
       </div>
     </section>
 
-    <section class="scroll-section" style="background: rgba(0,0,0,0.2);">
+    <section class="scroll-section" style="background: rgba(255,255,255,0.02);">
       <div class="release-layout">
         <div class="release-details reveal order-swap-mobile" style="padding-left: 5vw;">
           <div class="tech-specs">
@@ -169,6 +169,7 @@
     <section id="contact" class="scroll-section">
       <div class="contact-minimal reveal">
         <p style="color: #666; margin-bottom: 1rem;">INQUIRIES / BOOKING / COLLAB</p>
+        
         <a href="mailto:PlanetOmPro@Gmail.com" class="email-display">PlanetOmPro@Gmail.com</a>
         
         <div class="social-row">
@@ -209,7 +210,6 @@
         </div>
       </div>
     </section>
-
   </main>
 </body>
 </html>

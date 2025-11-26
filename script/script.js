@@ -4,14 +4,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearSpan = document.getElementById("year");
   if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  // 2. Star Parallax
-  const starLayer = document.querySelector('.star-layer');
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    if (starLayer) {
-      starLayer.style.transform = `translateY(${scrolled * 0.3}px)`;
-    }
-  });
+  // 2. Mobile Menu Toggle
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  if(mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      mobileBtn.classList.toggle('active'); // for hamburger animation
+    });
+
+    // Close menu when a link is clicked
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileBtn.classList.remove('active');
+      });
+    });
+  }
 
   // 3. Toggle Preview Player (AUTOT Section)
   const playerBtn = document.getElementById('toggle-spotify');
@@ -73,24 +84,4 @@ document.addEventListener("DOMContentLoaded", () => {
       if(target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
-
-  // 7. MOBILE MENU TOGGLE (NEW)
-  const mobileBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
-
-  if(mobileBtn && mobileMenu) {
-    mobileBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-      mobileBtn.classList.toggle('active'); // Optional: for hamburger animation
-    });
-
-    // Close menu when a link is clicked
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        mobileBtn.classList.remove('active');
-      });
-    });
-  }
 });
