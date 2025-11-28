@@ -24,35 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 3. Toggle Preview Player (AUTOT Section)
-  const playerBtn = document.getElementById('toggle-spotify');
-  const playerWrapper = document.getElementById('spotify-wrapper');
-  const btnText = playerBtn ? playerBtn.querySelector('.btn-text') : null;
-
-  if (playerBtn && playerWrapper) {
-    playerBtn.addEventListener('click', () => {
-      playerWrapper.classList.toggle('open');
-      
-      if (playerWrapper.classList.contains('open')) {
-        if(btnText) btnText.textContent = "Close Player";
-      } else {
-        if(btnText) btnText.textContent = "Preview Album";
-      }
-    });
-  }
-
-  // 4. Toggle Huge Playlist Accordion
-  const playlistBtn = document.getElementById('toggle-playlist');
-  const playlistContent = document.getElementById('playlist-wrapper');
-
-  if (playlistBtn && playlistContent) {
-    playlistBtn.addEventListener('click', () => {
-      playlistBtn.classList.toggle('active');
-      playlistContent.classList.toggle('open');
-    });
-  }
-
-  // 5. Repeatable Scroll Reveal
+  // 3. Repeatable Scroll Reveal
   const observerOptions = {
     threshold: 0.15,
     rootMargin: "0px 0px -50px 0px"
@@ -73,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 
-  // 6. Smooth Scroll
+  // 4. Smooth Scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -82,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 7. Custom Cursor Logic
+  // 5. Custom Cursor Logic
   const cursor = document.getElementById('cursor');
   const cursorBlur = document.getElementById('cursor-blur');
 
@@ -98,12 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 8. Preloader Logic
+  // 6. Preloader Logic
   window.addEventListener('load', () => {
     document.body.classList.add('loaded');
   });
 
-  // 9. AUTO-HIDE NAV LOGO
+  // 7. AUTO-HIDE NAV LOGO
   const navLogo = document.querySelector('.nav-logo');
   
   const toggleNavLogo = () => {
@@ -115,6 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.addEventListener('scroll', toggleNavLogo);
-  toggleNavLogo(); // Run on init
+  toggleNavLogo(); 
 
 });
