@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   
+  // Year Update
   const yearSpan = document.getElementById("year");
   if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
+  // Mobile Menu Logic
   const mobileBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -21,16 +23,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Animation Observer: Removed 'else' block to prevent fade-out on scroll up
   const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('active');
-      else entry.target.classList.remove('active');
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        // Optional: unobserve to improve performance
+        observer.unobserve(entry.target);
+      }
     });
   }, observerOptions);
   
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+  // Smooth Scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -39,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Custom Cursor
   const cursor = document.getElementById('cursor');
   const cursorBlur = document.getElementById('cursor-blur');
   if(cursor && cursorBlur) {
@@ -52,10 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Page Load State
   window.addEventListener('load', () => {
     document.body.classList.add('loaded');
   });
 
+  // Nav Logo Reveal
   const navLogo = document.querySelector('.nav-logo');
   const toggleNavLogo = () => {
     if (window.innerWidth > 768) {
